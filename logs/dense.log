@@ -1,0 +1,129 @@
+run=dense mode=dense device=cuda (NVIDIA GeForce GTX 1660 Ti) dtype=fp32
+args: {"mode": "dense", "run": "dense", "init": null, "steps": 2000, "lr": 0.001, "min_lr_frac": 0.1, "warmup": 200, "decay_frac": 0.0, "batch": 32, "accum": 2, "weight_decay": 0.1, "grad_clip": 1.0, "dtype": "fp32", "eval_interval": 100, "eval_batches": 40, "log_interval": 20, "seed": 0, "data_seed": 1, "n_layer": 6, "d_model": 256, "n_head": 4, "n_kv_head": 2, "ffn_hidden": 1024, "block_size": 256, "upcycle": "partition", "importance": 1, "drop_ratio": 0.0, "n_experts": 16, "top_k": 2, "expert_hidden": 256, "shared_hidden": 512, "route_scale": null, "score_func": "sigmoid", "bias_speed": 0.001, "seq_aux": 0.0001, "sample_window": 300, "sample_noise": 0.05, "transfer_opt": 1}
+model config: {"vocab_size": 8192, "block_size": 256, "n_layer": 6, "n_head": 4, "n_kv_head": 2, "d_model": 256, "ffn_hidden": 1024, "rope_theta": 10000.0, "moe": false, "n_experts": 16, "top_k": 2, "expert_hidden": 256, "shared_hidden": 512, "score_func": "sigmoid", "route_scale": 2.0, "bias_update_speed": 0.001, "seq_aux_alpha": 0.0001, "router_init_std": 0.002}
+params: total 8.00M  active/token 8.00M  (non-embedding total 5.90M)
+tokens/step 16,384  starting at global step 0, 0.0M tokens seen
+step    20 (global    20,    0.3M tok) | loss 8.5746 | lr 1.00e-04 | gnorm 2.10 | 36.4k tok/s
+step    40 (global    40,    0.7M tok) | loss 7.5459 | lr 2.00e-04 | gnorm 1.85 | 36.1k tok/s
+step    60 (global    60,    1.0M tok) | loss 6.3346 | lr 3.00e-04 | gnorm 1.41 | 25.7k tok/s
+step    80 (global    80,    1.3M tok) | loss 5.2396 | lr 4.00e-04 | gnorm 1.10 | 20.8k tok/s
+step   100 (global   100,    1.6M tok) | loss 4.4894 | lr 5.00e-04 | gnorm 0.75 | 20.1k tok/s
+step   100 (global   100,    1.6M tok) | val loss 4.2007
+step   120 (global   120,    2.0M tok) | loss 4.0238 | lr 6.00e-04 | gnorm 0.73 | 15.2k tok/s
+step   140 (global   140,    2.3M tok) | loss 3.7191 | lr 7.00e-04 | gnorm 0.87 | 18.5k tok/s
+step   160 (global   160,    2.6M tok) | loss 3.5178 | lr 8.00e-04 | gnorm 0.90 | 19.8k tok/s
+step   180 (global   180,    2.9M tok) | loss 3.3826 | lr 9.00e-04 | gnorm 0.79 | 19.7k tok/s
+step   200 (global   200,    3.3M tok) | loss 3.2331 | lr 1.00e-03 | gnorm 0.80 | 19.6k tok/s
+step   200 (global   200,    3.3M tok) | val loss 3.1775
+step   220 (global   220,    3.6M tok) | loss 3.1587 | lr 1.00e-03 | gnorm 0.78 | 13.7k tok/s
+step   240 (global   240,    3.9M tok) | loss 3.0564 | lr 1.00e-03 | gnorm 0.77 | 19.7k tok/s
+step   260 (global   260,    4.3M tok) | loss 2.9549 | lr 1.00e-03 | gnorm 0.75 | 18.6k tok/s
+step   280 (global   280,    4.6M tok) | loss 2.9046 | lr 1.00e-03 | gnorm 0.75 | 18.5k tok/s
+step   300 (global   300,    4.9M tok) | loss 2.8447 | lr 1.00e-03 | gnorm 0.66 | 19.6k tok/s
+step   300 (global   300,    4.9M tok) | val loss 2.8206
+step   320 (global   320,    5.2M tok) | loss 2.8093 | lr 1.00e-03 | gnorm 0.81 | 13.7k tok/s
+step   340 (global   340,    5.6M tok) | loss 2.7622 | lr 1.00e-03 | gnorm 0.62 | 19.5k tok/s
+step   360 (global   360,    5.9M tok) | loss 2.7244 | lr 1.00e-03 | gnorm 0.68 | 19.5k tok/s
+step   380 (global   380,    6.2M tok) | loss 2.6889 | lr 1.00e-03 | gnorm 0.75 | 17.5k tok/s
+step   400 (global   400,    6.6M tok) | loss 2.6532 | lr 1.00e-03 | gnorm 0.68 | 19.6k tok/s
+step   400 (global   400,    6.6M tok) | val loss 2.6229
+step   420 (global   420,    6.9M tok) | loss 2.6275 | lr 1.00e-03 | gnorm 0.60 | 13.7k tok/s
+step   440 (global   440,    7.2M tok) | loss 2.6140 | lr 1.00e-03 | gnorm 0.62 | 17.5k tok/s
+step   460 (global   460,    7.5M tok) | loss 2.5597 | lr 1.00e-03 | gnorm 0.61 | 19.6k tok/s
+step   480 (global   480,    7.9M tok) | loss 2.5504 | lr 1.00e-03 | gnorm 0.60 | 17.3k tok/s
+step   500 (global   500,    8.2M tok) | loss 2.5084 | lr 1.00e-03 | gnorm 0.63 | 19.5k tok/s
+step   500 (global   500,    8.2M tok) | val loss 2.4904
+step   520 (global   520,    8.5M tok) | loss 2.4777 | lr 1.00e-03 | gnorm 0.61 | 13.5k tok/s
+step   540 (global   540,    8.8M tok) | loss 2.4761 | lr 1.00e-03 | gnorm 0.64 | 17.5k tok/s
+step   560 (global   560,    9.2M tok) | loss 2.4372 | lr 1.00e-03 | gnorm 0.56 | 17.6k tok/s
+step   580 (global   580,    9.5M tok) | loss 2.4087 | lr 1.00e-03 | gnorm 0.58 | 17.6k tok/s
+step   600 (global   600,    9.8M tok) | loss 2.4142 | lr 1.00e-03 | gnorm 0.64 | 19.4k tok/s
+step   600 (global   600,    9.8M tok) | val loss 2.3945
+step   620 (global   620,   10.2M tok) | loss 2.3876 | lr 1.00e-03 | gnorm 0.59 | 13.6k tok/s
+step   640 (global   640,   10.5M tok) | loss 2.3854 | lr 1.00e-03 | gnorm 0.58 | 19.4k tok/s
+step   660 (global   660,   10.8M tok) | loss 2.3615 | lr 1.00e-03 | gnorm 0.65 | 17.4k tok/s
+step   680 (global   680,   11.1M tok) | loss 2.3536 | lr 1.00e-03 | gnorm 0.56 | 19.3k tok/s
+step   700 (global   700,   11.5M tok) | loss 2.3422 | lr 1.00e-03 | gnorm 0.56 | 15.9k tok/s
+step   700 (global   700,   11.5M tok) | val loss 2.3258
+step   720 (global   720,   11.8M tok) | loss 2.3106 | lr 1.00e-03 | gnorm 0.57 | 13.6k tok/s
+step   740 (global   740,   12.1M tok) | loss 2.3290 | lr 1.00e-03 | gnorm 0.55 | 17.5k tok/s
+step   760 (global   760,   12.5M tok) | loss 2.3059 | lr 1.00e-03 | gnorm 0.56 | 19.2k tok/s
+step   780 (global   780,   12.8M tok) | loss 2.2912 | lr 1.00e-03 | gnorm 0.54 | 17.7k tok/s
+step   800 (global   800,   13.1M tok) | loss 2.2647 | lr 1.00e-03 | gnorm 0.55 | 17.4k tok/s
+step   800 (global   800,   13.1M tok) | val loss 2.2656
+step   820 (global   820,   13.4M tok) | loss 2.2623 | lr 1.00e-03 | gnorm 0.52 | 12.6k tok/s
+step   840 (global   840,   13.8M tok) | loss 2.2399 | lr 1.00e-03 | gnorm 0.53 | 19.6k tok/s
+step   860 (global   860,   14.1M tok) | loss 2.2669 | lr 1.00e-03 | gnorm 0.55 | 20.7k tok/s
+step   880 (global   880,   14.4M tok) | loss 2.2287 | lr 1.00e-03 | gnorm 0.56 | 17.5k tok/s
+step   900 (global   900,   14.7M tok) | loss 2.2249 | lr 1.00e-03 | gnorm 0.55 | 19.6k tok/s
+step   900 (global   900,   14.7M tok) | val loss 2.2254
+step   920 (global   920,   15.1M tok) | loss 2.2062 | lr 1.00e-03 | gnorm 0.54 | 13.8k tok/s
+step   940 (global   940,   15.4M tok) | loss 2.2086 | lr 1.00e-03 | gnorm 0.53 | 17.6k tok/s
+step   960 (global   960,   15.7M tok) | loss 2.1961 | lr 1.00e-03 | gnorm 0.54 | 19.7k tok/s
+step   980 (global   980,   16.1M tok) | loss 2.2018 | lr 1.00e-03 | gnorm 0.55 | 19.5k tok/s
+step  1000 (global  1000,   16.4M tok) | loss 2.2143 | lr 1.00e-03 | gnorm 0.53 | 19.6k tok/s
+step  1000 (global  1000,   16.4M tok) | val loss 2.1864
+step  1020 (global  1020,   16.7M tok) | loss 2.1858 | lr 1.00e-03 | gnorm 0.52 | 13.7k tok/s
+step  1040 (global  1040,   17.0M tok) | loss 2.1671 | lr 1.00e-03 | gnorm 0.53 | 18.2k tok/s
+step  1060 (global  1060,   17.4M tok) | loss 2.1616 | lr 1.00e-03 | gnorm 0.52 | 18.6k tok/s
+step  1080 (global  1080,   17.7M tok) | loss 2.1576 | lr 1.00e-03 | gnorm 0.52 | 19.5k tok/s
+step  1100 (global  1100,   18.0M tok) | loss 2.1501 | lr 1.00e-03 | gnorm 0.51 | 19.4k tok/s
+step  1100 (global  1100,   18.0M tok) | val loss 2.1504
+step  1120 (global  1120,   18.4M tok) | loss 2.1542 | lr 1.00e-03 | gnorm 0.53 | 12.7k tok/s
+step  1140 (global  1140,   18.7M tok) | loss 2.1469 | lr 1.00e-03 | gnorm 0.51 | 19.4k tok/s
+step  1160 (global  1160,   19.0M tok) | loss 2.1439 | lr 1.00e-03 | gnorm 0.53 | 19.4k tok/s
+step  1180 (global  1180,   19.3M tok) | loss 2.1625 | lr 1.00e-03 | gnorm 0.49 | 17.4k tok/s
+step  1200 (global  1200,   19.7M tok) | loss 2.1298 | lr 1.00e-03 | gnorm 0.52 | 19.2k tok/s
+step  1200 (global  1200,   19.7M tok) | val loss 2.1211
+step  1220 (global  1220,   20.0M tok) | loss 2.1084 | lr 1.00e-03 | gnorm 0.49 | 13.9k tok/s
+step  1240 (global  1240,   20.3M tok) | loss 2.1231 | lr 1.00e-03 | gnorm 0.52 | 17.5k tok/s
+step  1260 (global  1260,   20.6M tok) | loss 2.1222 | lr 1.00e-03 | gnorm 0.51 | 19.4k tok/s
+step  1280 (global  1280,   21.0M tok) | loss 2.1098 | lr 1.00e-03 | gnorm 0.52 | 17.5k tok/s
+step  1300 (global  1300,   21.3M tok) | loss 2.0955 | lr 1.00e-03 | gnorm 0.52 | 19.5k tok/s
+step  1300 (global  1300,   21.3M tok) | val loss 2.1031
+step  1320 (global  1320,   21.6M tok) | loss 2.1071 | lr 1.00e-03 | gnorm 0.49 | 13.6k tok/s
+step  1340 (global  1340,   22.0M tok) | loss 2.0772 | lr 1.00e-03 | gnorm 0.51 | 15.9k tok/s
+step  1360 (global  1360,   22.3M tok) | loss 2.0974 | lr 1.00e-03 | gnorm 0.48 | 19.6k tok/s
+step  1380 (global  1380,   22.6M tok) | loss 2.0914 | lr 1.00e-03 | gnorm 0.49 | 15.9k tok/s
+step  1400 (global  1400,   22.9M tok) | loss 2.0967 | lr 1.00e-03 | gnorm 0.49 | 19.6k tok/s
+step  1400 (global  1400,   22.9M tok) | val loss 2.0823
+step  1420 (global  1420,   23.3M tok) | loss 2.0866 | lr 1.00e-03 | gnorm 0.50 | 13.7k tok/s
+step  1440 (global  1440,   23.6M tok) | loss 2.0696 | lr 1.00e-03 | gnorm 0.47 | 17.6k tok/s
+step  1460 (global  1460,   23.9M tok) | loss 2.0656 | lr 1.00e-03 | gnorm 0.49 | 17.5k tok/s
+step  1480 (global  1480,   24.2M tok) | loss 2.0581 | lr 1.00e-03 | gnorm 0.50 | 19.4k tok/s
+step  1500 (global  1500,   24.6M tok) | loss 2.0766 | lr 1.00e-03 | gnorm 0.48 | 17.4k tok/s
+step  1500 (global  1500,   24.6M tok) | val loss 2.0622
+step  1520 (global  1520,   24.9M tok) | loss 2.0533 | lr 1.00e-03 | gnorm 0.47 | 13.6k tok/s
+step  1540 (global  1540,   25.2M tok) | loss 2.0493 | lr 1.00e-03 | gnorm 0.47 | 17.7k tok/s
+step  1560 (global  1560,   25.6M tok) | loss 2.0517 | lr 1.00e-03 | gnorm 0.51 | 19.1k tok/s
+step  1580 (global  1580,   25.9M tok) | loss 2.0457 | lr 1.00e-03 | gnorm 0.48 | 19.2k tok/s
+step  1600 (global  1600,   26.2M tok) | loss 2.0498 | lr 1.00e-03 | gnorm 0.50 | 17.3k tok/s
+step  1600 (global  1600,   26.2M tok) | val loss 2.0426
+step  1620 (global  1620,   26.5M tok) | loss 2.0219 | lr 1.00e-03 | gnorm 0.49 | 13.5k tok/s
+step  1640 (global  1640,   26.9M tok) | loss 2.0244 | lr 1.00e-03 | gnorm 0.48 | 19.3k tok/s
+step  1660 (global  1660,   27.2M tok) | loss 2.0202 | lr 1.00e-03 | gnorm 0.47 | 17.6k tok/s
+step  1680 (global  1680,   27.5M tok) | loss 2.0291 | lr 1.00e-03 | gnorm 0.46 | 19.5k tok/s
+step  1700 (global  1700,   27.9M tok) | loss 2.0246 | lr 1.00e-03 | gnorm 0.47 | 17.5k tok/s
+step  1700 (global  1700,   27.9M tok) | val loss 2.0296
+step  1720 (global  1720,   28.2M tok) | loss 2.0225 | lr 1.00e-03 | gnorm 0.47 | 13.5k tok/s
+step  1740 (global  1740,   28.5M tok) | loss 2.0094 | lr 1.00e-03 | gnorm 0.45 | 17.5k tok/s
+step  1760 (global  1760,   28.8M tok) | loss 2.0279 | lr 1.00e-03 | gnorm 0.48 | 19.3k tok/s
+step  1780 (global  1780,   29.2M tok) | loss 2.0263 | lr 1.00e-03 | gnorm 0.47 | 17.5k tok/s
+step  1800 (global  1800,   29.5M tok) | loss 1.9992 | lr 1.00e-03 | gnorm 0.47 | 18.6k tok/s
+step  1800 (global  1800,   29.5M tok) | val loss 2.0195
+step  1820 (global  1820,   29.8M tok) | loss 2.0128 | lr 1.00e-03 | gnorm 0.48 | 13.6k tok/s
+step  1840 (global  1840,   30.1M tok) | loss 2.0197 | lr 1.00e-03 | gnorm 0.50 | 19.4k tok/s
+step  1860 (global  1860,   30.5M tok) | loss 2.0052 | lr 1.00e-03 | gnorm 0.46 | 17.6k tok/s
+step  1880 (global  1880,   30.8M tok) | loss 2.0081 | lr 1.00e-03 | gnorm 0.46 | 19.2k tok/s
+step  1900 (global  1900,   31.1M tok) | loss 2.0054 | lr 1.00e-03 | gnorm 0.47 | 17.3k tok/s
+step  1900 (global  1900,   31.1M tok) | val loss 2.0031
+step  1920 (global  1920,   31.5M tok) | loss 1.9864 | lr 1.00e-03 | gnorm 0.48 | 12.5k tok/s
+step  1940 (global  1940,   31.8M tok) | loss 1.9972 | lr 1.00e-03 | gnorm 0.46 | 18.9k tok/s
+step  1960 (global  1960,   32.1M tok) | loss 1.9788 | lr 1.00e-03 | gnorm 0.45 | 16.2k tok/s
+step  1980 (global  1980,   32.4M tok) | loss 1.9876 | lr 1.00e-03 | gnorm 0.46 | 19.5k tok/s
+step  2000 (global  2000,   32.8M tok) | loss 2.0079 | lr 1.00e-03 | gnorm 0.48 | 17.5k tok/s
+step  2000 (global  2000,   32.8M tok) | val loss 1.9920
+final val loss 1.9920  (training time 31.4 min)
+sample [Once upon a time]: 'Once upon a time, there was a little girl who was very curious. She wanted to know what all the animals were talking about. One day, she asked a bee to help her. The bee said she could help when she was feeling hot. \n\nThe little girl was so excited to help the bee. She said yes and the bee was stron'
+sample [The little dog]: 'The little dog barked in response. \n\nThe little dog looked at him and smiled. He was so happy he was able to help his new friend.'
+sample [Lily wanted to]: 'Lily wanted to play with the big, red ball. She said to Ben, "Let\'s play with the ball. It is fun and fast. We can run fast and be safe."\n\nBen agreed, and they had fun. They played with the big red ball and had fun. They did not want to break the big blue ball.\n\nThe big red red ball goes next to the'

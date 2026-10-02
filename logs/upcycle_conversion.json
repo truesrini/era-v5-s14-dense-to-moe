@@ -1,0 +1,58 @@
+[
+  {
+    "method": "dense model (before conversion)",
+    "val_loss": 1.9920355916023254,
+    "delta": 0.0,
+    "total_params_M": 7.999488,
+    "active_params_M": 7.999488
+  },
+  {
+    "method": "copy: 8 full copies, top-2 (sparse upcycling)",
+    "val_loss": 1.9920356154441834,
+    "delta": 2.3841858043383013e-08,
+    "total_params_M": 41.04192,
+    "active_params_M": 12.730368
+  },
+  {
+    "method": "partition, random neurons -> shared, random subsets -> experts",
+    "val_loss": 2.0824213325977325,
+    "delta": 0.0903857409954072,
+    "total_params_M": 24.539136,
+    "active_params_M": 8.024064
+  },
+  {
+    "method": "partition, important neurons -> shared (ours)",
+    "val_loss": 2.051494467258453,
+    "delta": 0.05945887565612784,
+    "total_params_M": 24.539136,
+    "active_params_M": 8.024064
+  },
+  {
+    "method": "partition (ours) + drop-upcycling r=0.5",
+    "val_loss": 2.1438173234462736,
+    "delta": 0.15178173184394828,
+    "total_params_M": 24.539136,
+    "active_params_M": 8.024064
+  },
+  {
+    "method": "partition (ours), route_scale 1 instead of 2",
+    "val_loss": 2.0908389538526535,
+    "delta": 0.09880336225032815,
+    "total_params_M": 24.539136,
+    "active_params_M": 8.024064
+  },
+  {
+    "method": "no shared expert: 16 experts x 512, top-2",
+    "val_loss": 2.189707988500595,
+    "delta": 0.19767239689826965,
+    "total_params_M": 41.054208,
+    "active_params_M": 8.024064
+  },
+  {
+    "method": "scratch: attention copied, FFN re-initialised",
+    "val_loss": 10.013175702095031,
+    "delta": 8.021140110492706,
+    "total_params_M": 24.539136,
+    "active_params_M": 8.024064
+  }
+]

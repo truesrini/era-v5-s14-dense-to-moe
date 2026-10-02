@@ -1,0 +1,46 @@
+run=moe_scratch_ffn mode=moe device=cuda (NVIDIA GeForce GTX 1660 Ti) dtype=fp32
+args: {"mode": "moe", "run": "moe_scratch_ffn", "init": "checkpoints/dense.pt", "steps": 600, "lr": 0.001, "min_lr_frac": 0.1, "warmup": 100, "decay_frac": 0.0, "batch": 32, "accum": 2, "weight_decay": 0.1, "grad_clip": 1.0, "dtype": "fp32", "eval_interval": 100, "eval_batches": 40, "log_interval": 20, "seed": 0, "data_seed": 1, "n_layer": 6, "d_model": 256, "n_head": 4, "n_kv_head": 2, "ffn_hidden": 1024, "block_size": 256, "upcycle": "scratch", "importance": 1, "drop_ratio": 0.0, "n_experts": 16, "top_k": 2, "expert_hidden": 256, "shared_hidden": 512, "route_scale": null, "score_func": "sigmoid", "bias_speed": 0.001, "seq_aux": 0.0001, "sample_window": 300, "sample_noise": 0.05, "transfer_opt": 1}
+model config: {"vocab_size": 8192, "block_size": 256, "n_layer": 6, "n_head": 4, "n_kv_head": 2, "d_model": 256, "ffn_hidden": 1024, "rope_theta": 10000.0, "moe": true, "n_experts": 16, "top_k": 2, "expert_hidden": 256, "shared_hidden": 512, "score_func": "sigmoid", "route_scale": 2.0, "bias_update_speed": 0.001, "seq_aux_alpha": 0.0001, "router_init_std": 0.002}
+params: total 24.54M  active/token 8.02M  (non-embedding total 22.44M)
+tokens/step 16,384  starting at global step 2000, 32.8M tokens seen
+conversion: dense val loss 1.9920 -> MoE val loss at step 0 10.0746  (Adam state tensors carried over: 50)
+step    20 (global  2020,   33.1M tok) | loss 7.4611 | lr 2.00e-04 | gnorm 3.14 | 12.8k tok/s | aux 0.00060 | MaxVio 0.220 | dead 0 starved 0 | bias [-0.020,+0.020]
+step    40 (global  2040,   33.4M tok) | loss 5.1198 | lr 4.00e-04 | gnorm 2.49 | 12.0k tok/s | aux 0.00062 | MaxVio 1.312 | dead 0 starved 0 | bias [-0.040,+0.040]
+step    60 (global  2060,   33.8M tok) | loss 3.6956 | lr 6.00e-04 | gnorm 1.52 | 11.3k tok/s | aux 0.00069 | MaxVio 3.534 | dead 0 starved 0 | bias [-0.060,+0.060]
+step    80 (global  2080,   34.1M tok) | loss 3.0219 | lr 8.00e-04 | gnorm 1.25 | 12.0k tok/s | aux 0.00072 | MaxVio 3.948 | dead 0 starved 0 | bias [-0.076,+0.080]
+step   100 (global  2100,   34.4M tok) | loss 2.7185 | lr 1.00e-03 | gnorm 0.94 | 11.9k tok/s | aux 0.00074 | MaxVio 3.843 | dead 0 starved 0 | bias [-0.096,+0.100]
+step   100 (global  2100,   34.4M tok) | val loss 2.6123
+step   120 (global  2120,   34.7M tok) | loss 2.5739 | lr 1.00e-03 | gnorm 0.80 | 8.8k tok/s | aux 0.00074 | MaxVio 3.548 | dead 0 starved 0 | bias [-0.116,+0.120]
+step   140 (global  2140,   35.1M tok) | loss 2.4685 | lr 1.00e-03 | gnorm 0.81 | 11.9k tok/s | aux 0.00074 | MaxVio 3.322 | dead 0 starved 0 | bias [-0.136,+0.140]
+step   160 (global  2160,   35.4M tok) | loss 2.3960 | lr 1.00e-03 | gnorm 0.75 | 11.4k tok/s | aux 0.00074 | MaxVio 3.132 | dead 0 starved 0 | bias [-0.156,+0.160]
+step   180 (global  2180,   35.7M tok) | loss 2.3746 | lr 1.00e-03 | gnorm 0.70 | 11.3k tok/s | aux 0.00075 | MaxVio 3.003 | dead 0 starved 0 | bias [-0.176,+0.180]
+step   200 (global  2200,   36.0M tok) | loss 2.3036 | lr 1.00e-03 | gnorm 0.64 | 13.1k tok/s | aux 0.00073 | MaxVio 2.631 | dead 0 starved 0 | bias [-0.196,+0.200]
+step   200 (global  2200,   36.0M tok) | val loss 2.2963
+step   220 (global  2220,   36.4M tok) | loss 2.3032 | lr 1.00e-03 | gnorm 0.66 | 8.9k tok/s | aux 0.00074 | MaxVio 2.555 | dead 0 starved 0 | bias [-0.216,+0.213]
+step   240 (global  2240,   36.7M tok) | loss 2.2660 | lr 1.00e-03 | gnorm 0.57 | 12.0k tok/s | aux 0.00072 | MaxVio 2.182 | dead 0 starved 0 | bias [-0.236,+0.233]
+step   260 (global  2260,   37.0M tok) | loss 2.2099 | lr 1.00e-03 | gnorm 0.60 | 12.7k tok/s | aux 0.00072 | MaxVio 2.030 | dead 0 starved 1 | bias [-0.256,+0.253]
+step   280 (global  2280,   37.4M tok) | loss 2.2142 | lr 1.00e-03 | gnorm 0.63 | 11.9k tok/s | aux 0.00071 | MaxVio 1.703 | dead 0 starved 1 | bias [-0.276,+0.273]
+step   300 (global  2300,   37.7M tok) | loss 2.1906 | lr 1.00e-03 | gnorm 0.58 | 11.9k tok/s | aux 0.00069 | MaxVio 1.425 | dead 0 starved 0 | bias [-0.296,+0.285]
+step   300 (global  2300,   37.7M tok) | val loss 2.1979
+step   320 (global  2320,   38.0M tok) | loss 2.1885 | lr 1.00e-03 | gnorm 0.68 | 8.9k tok/s | aux 0.00068 | MaxVio 1.123 | dead 0 starved 0 | bias [-0.316,+0.299]
+step   340 (global  2340,   38.3M tok) | loss 2.1793 | lr 1.00e-03 | gnorm 0.56 | 11.3k tok/s | aux 0.00067 | MaxVio 0.896 | dead 0 starved 0 | bias [-0.336,+0.296]
+step   360 (global  2360,   38.7M tok) | loss 2.1628 | lr 1.00e-03 | gnorm 0.51 | 11.9k tok/s | aux 0.00065 | MaxVio 0.637 | dead 0 starved 0 | bias [-0.346,+0.314]
+step   380 (global  2380,   39.0M tok) | loss 2.1584 | lr 1.00e-03 | gnorm 0.61 | 11.4k tok/s | aux 0.00064 | MaxVio 0.463 | dead 0 starved 0 | bias [-0.366,+0.318]
+step   400 (global  2400,   39.3M tok) | loss 2.1475 | lr 1.00e-03 | gnorm 0.58 | 11.3k tok/s | aux 0.00063 | MaxVio 0.317 | dead 0 starved 0 | bias [-0.384,+0.325]
+step   400 (global  2400,   39.3M tok) | val loss 2.1456
+step   420 (global  2420,   39.6M tok) | loss 2.1495 | lr 1.00e-03 | gnorm 0.55 | 8.6k tok/s | aux 0.00062 | MaxVio 0.292 | dead 0 starved 0 | bias [-0.390,+0.331]
+step   440 (global  2440,   40.0M tok) | loss 2.1481 | lr 1.00e-03 | gnorm 0.52 | 12.1k tok/s | aux 0.00062 | MaxVio 0.267 | dead 0 starved 0 | bias [-0.388,+0.325]
+step   460 (global  2460,   40.3M tok) | loss 2.1160 | lr 1.00e-03 | gnorm 0.50 | 11.9k tok/s | aux 0.00062 | MaxVio 0.303 | dead 0 starved 0 | bias [-0.370,+0.327]
+step   480 (global  2480,   40.6M tok) | loss 2.1180 | lr 1.00e-03 | gnorm 0.51 | 11.2k tok/s | aux 0.00062 | MaxVio 0.297 | dead 0 starved 0 | bias [-0.358,+0.317]
+step   500 (global  2500,   41.0M tok) | loss 2.0965 | lr 1.00e-03 | gnorm 0.52 | 11.2k tok/s | aux 0.00062 | MaxVio 0.289 | dead 0 starved 0 | bias [-0.348,+0.317]
+step   500 (global  2500,   41.0M tok) | val loss 2.0957
+step   520 (global  2520,   41.3M tok) | loss 2.0775 | lr 1.00e-03 | gnorm 0.53 | 9.4k tok/s | aux 0.00062 | MaxVio 0.305 | dead 0 starved 0 | bias [-0.328,+0.315]
+step   540 (global  2540,   41.6M tok) | loss 2.0896 | lr 1.00e-03 | gnorm 0.49 | 11.3k tok/s | aux 0.00062 | MaxVio 0.313 | dead 0 starved 0 | bias [-0.308,+0.303]
+step   560 (global  2560,   41.9M tok) | loss 2.0651 | lr 1.00e-03 | gnorm 0.49 | 11.7k tok/s | aux 0.00062 | MaxVio 0.257 | dead 0 starved 0 | bias [-0.297,+0.301]
+step   580 (global  2580,   42.3M tok) | loss 2.0499 | lr 1.00e-03 | gnorm 0.49 | 14.9k tok/s | aux 0.00062 | MaxVio 0.259 | dead 0 starved 0 | bias [-0.277,+0.297]
+step   600 (global  2600,   42.6M tok) | loss 2.0650 | lr 1.00e-03 | gnorm 0.48 | 12.0k tok/s | aux 0.00062 | MaxVio 0.270 | dead 0 starved 0 | bias [-0.257,+0.281]
+step   600 (global  2600,   42.6M tok) | val loss 2.0606
+final val loss 2.0606  (training time 14.8 min)
+sample [Once upon a time]: 'Once upon a time, there was a little girl named Lily. She loved to play with her dolls all day long. One day, her mom gave her a big box of matches. Lily was so excited to eat them when she accidentally dropped them. \n\nLily\'s mom said, "Don\'t worry, we\'ll wash them." So Lily went to the kitchen and '
+sample [The little dog]: "The little dog was mean. But his owner told him to stop. The boy was happy to join his pet and he could run around the yard.\n\nBut the boy was too shy. He could not get home. The boy's owner was gone. He was sad too. The little dog had no pet.\n\nHe never forgot the little boy. He loved playing in the "
+sample [Lily wanted to]: 'Lily wanted to play with her doll, but she didn\'t want to share her doll. She wanted it. She started to fight.\n\n"Give it back, Lily! That\'s not nice. That\'s not nice of Anna. She was rude and rude. You can fight over your doll. Go away!"\n\nBut Lily did not listen to her and pulled it. She made a loud'

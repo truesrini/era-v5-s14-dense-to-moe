@@ -1,0 +1,46 @@
+run=moe_nobalance mode=moe device=cuda (NVIDIA GeForce GTX 1660 Ti) dtype=fp32
+args: {"mode": "moe", "run": "moe_nobalance", "init": "checkpoints/dense.pt", "steps": 600, "lr": 0.001, "min_lr_frac": 0.1, "warmup": 100, "decay_frac": 0.0, "batch": 32, "accum": 2, "weight_decay": 0.1, "grad_clip": 1.0, "dtype": "fp32", "eval_interval": 100, "eval_batches": 40, "log_interval": 20, "seed": 0, "data_seed": 1, "n_layer": 6, "d_model": 256, "n_head": 4, "n_kv_head": 2, "ffn_hidden": 1024, "block_size": 256, "upcycle": "partition", "importance": 1, "drop_ratio": 0.0, "n_experts": 16, "top_k": 2, "expert_hidden": 256, "shared_hidden": 512, "route_scale": null, "score_func": "sigmoid", "bias_speed": 0.0, "seq_aux": 0.0, "sample_window": 0, "sample_noise": 0.05, "transfer_opt": 1}
+model config: {"vocab_size": 8192, "block_size": 256, "n_layer": 6, "n_head": 4, "n_kv_head": 2, "d_model": 256, "ffn_hidden": 1024, "rope_theta": 10000.0, "moe": true, "n_experts": 16, "top_k": 2, "expert_hidden": 256, "shared_hidden": 512, "score_func": "sigmoid", "route_scale": 2.0, "bias_update_speed": 0.0, "seq_aux_alpha": 0.0, "router_init_std": 0.002}
+params: total 24.54M  active/token 8.02M  (non-embedding total 22.44M)
+tokens/step 16,384  starting at global step 2000, 32.8M tokens seen
+conversion: dense val loss 1.9920 -> MoE val loss at step 0 2.0520  (Adam state tensors carried over: 86)
+step    20 (global  2020,   33.1M tok) | loss 2.0436 | lr 2.00e-04 | gnorm 0.43 | 13.8k tok/s | aux 0.00000 | MaxVio 0.914 | dead 0 starved 0 | bias [+0.000,+0.000]
+step    40 (global  2040,   33.4M tok) | loss 1.9592 | lr 4.00e-04 | gnorm 0.44 | 12.3k tok/s | aux 0.00000 | MaxVio 1.375 | dead 0 starved 0 | bias [+0.000,+0.000]
+step    60 (global  2060,   33.8M tok) | loss 1.9743 | lr 6.00e-04 | gnorm 0.43 | 13.3k tok/s | aux 0.00000 | MaxVio 1.702 | dead 0 starved 1 | bias [+0.000,+0.000]
+step    80 (global  2080,   34.1M tok) | loss 1.9747 | lr 8.00e-04 | gnorm 0.47 | 12.3k tok/s | aux 0.00000 | MaxVio 2.162 | dead 0 starved 4 | bias [+0.000,+0.000]
+step   100 (global  2100,   34.4M tok) | loss 1.9880 | lr 1.00e-03 | gnorm 0.46 | 12.4k tok/s | aux 0.00000 | MaxVio 3.047 | dead 0 starved 8 | bias [+0.000,+0.000]
+step   100 (global  2100,   34.4M tok) | val loss 1.9957
+step   120 (global  2120,   34.7M tok) | loss 2.0078 | lr 1.00e-03 | gnorm 0.47 | 9.1k tok/s | aux 0.00000 | MaxVio 4.169 | dead 0 starved 13 | bias [+0.000,+0.000]
+step   140 (global  2140,   35.1M tok) | loss 1.9988 | lr 1.00e-03 | gnorm 0.47 | 12.2k tok/s | aux 0.00000 | MaxVio 4.702 | dead 0 starved 15 | bias [+0.000,+0.000]
+step   160 (global  2160,   35.4M tok) | loss 1.9920 | lr 1.00e-03 | gnorm 0.46 | 12.5k tok/s | aux 0.00000 | MaxVio 5.218 | dead 0 starved 23 | bias [+0.000,+0.000]
+step   180 (global  2180,   35.7M tok) | loss 2.0150 | lr 1.00e-03 | gnorm 0.48 | 12.4k tok/s | aux 0.00000 | MaxVio 5.554 | dead 0 starved 30 | bias [+0.000,+0.000]
+step   200 (global  2200,   36.0M tok) | loss 1.9792 | lr 1.00e-03 | gnorm 0.46 | 13.3k tok/s | aux 0.00000 | MaxVio 5.674 | dead 0 starved 38 | bias [+0.000,+0.000]
+step   200 (global  2200,   36.0M tok) | val loss 1.9974
+step   220 (global  2220,   36.4M tok) | loss 2.0028 | lr 1.00e-03 | gnorm 0.46 | 9.1k tok/s | aux 0.00000 | MaxVio 5.818 | dead 0 starved 41 | bias [+0.000,+0.000]
+step   240 (global  2240,   36.7M tok) | loss 1.9917 | lr 1.00e-03 | gnorm 0.45 | 13.3k tok/s | aux 0.00000 | MaxVio 5.975 | dead 0 starved 49 | bias [+0.000,+0.000]
+step   260 (global  2260,   37.0M tok) | loss 1.9572 | lr 1.00e-03 | gnorm 0.45 | 11.3k tok/s | aux 0.00000 | MaxVio 6.135 | dead 0 starved 52 | bias [+0.000,+0.000]
+step   280 (global  2280,   37.4M tok) | loss 1.9752 | lr 1.00e-03 | gnorm 0.46 | 11.5k tok/s | aux 0.00000 | MaxVio 6.165 | dead 0 starved 61 | bias [+0.000,+0.000]
+step   300 (global  2300,   37.7M tok) | loss 1.9672 | lr 1.00e-03 | gnorm 0.45 | 11.5k tok/s | aux 0.00000 | MaxVio 6.164 | dead 0 starved 59 | bias [+0.000,+0.000]
+step   300 (global  2300,   37.7M tok) | val loss 1.9838
+step   320 (global  2320,   38.0M tok) | loss 1.9689 | lr 1.00e-03 | gnorm 0.46 | 9.0k tok/s | aux 0.00000 | MaxVio 6.196 | dead 0 starved 62 | bias [+0.000,+0.000]
+step   340 (global  2340,   38.3M tok) | loss 1.9724 | lr 1.00e-03 | gnorm 0.46 | 11.4k tok/s | aux 0.00000 | MaxVio 6.242 | dead 0 starved 72 | bias [+0.000,+0.000]
+step   360 (global  2360,   38.7M tok) | loss 1.9656 | lr 1.00e-03 | gnorm 0.44 | 12.2k tok/s | aux 0.00000 | MaxVio 6.263 | dead 0 starved 75 | bias [+0.000,+0.000]
+step   380 (global  2380,   39.0M tok) | loss 1.9720 | lr 1.00e-03 | gnorm 0.46 | 11.5k tok/s | aux 0.00000 | MaxVio 6.299 | dead 0 starved 77 | bias [+0.000,+0.000]
+step   400 (global  2400,   39.3M tok) | loss 1.9646 | lr 1.00e-03 | gnorm 0.48 | 11.4k tok/s | aux 0.00000 | MaxVio 6.321 | dead 0 starved 77 | bias [+0.000,+0.000]
+step   400 (global  2400,   39.3M tok) | val loss 1.9711
+step   420 (global  2420,   39.6M tok) | loss 1.9754 | lr 1.00e-03 | gnorm 0.46 | 9.2k tok/s | aux 0.00000 | MaxVio 6.355 | dead 0 starved 78 | bias [+0.000,+0.000]
+step   440 (global  2440,   40.0M tok) | loss 1.9818 | lr 1.00e-03 | gnorm 0.45 | 12.1k tok/s | aux 0.00000 | MaxVio 6.366 | dead 0 starved 78 | bias [+0.000,+0.000]
+step   460 (global  2460,   40.3M tok) | loss 1.9583 | lr 1.00e-03 | gnorm 0.47 | 11.7k tok/s | aux 0.00000 | MaxVio 6.361 | dead 0 starved 80 | bias [+0.000,+0.000]
+step   480 (global  2480,   40.6M tok) | loss 1.9655 | lr 1.00e-03 | gnorm 0.44 | 11.6k tok/s | aux 0.00000 | MaxVio 6.361 | dead 0 starved 80 | bias [+0.000,+0.000]
+step   500 (global  2500,   41.0M tok) | loss 1.9526 | lr 1.00e-03 | gnorm 0.46 | 11.7k tok/s | aux 0.00000 | MaxVio 6.382 | dead 0 starved 80 | bias [+0.000,+0.000]
+step   500 (global  2500,   41.0M tok) | val loss 1.9587
+step   520 (global  2520,   41.3M tok) | loss 1.9357 | lr 1.00e-03 | gnorm 0.48 | 9.2k tok/s | aux 0.00000 | MaxVio 6.390 | dead 0 starved 80 | bias [+0.000,+0.000]
+step   540 (global  2540,   41.6M tok) | loss 1.9538 | lr 1.00e-03 | gnorm 0.43 | 11.6k tok/s | aux 0.00000 | MaxVio 6.399 | dead 0 starved 80 | bias [+0.000,+0.000]
+step   560 (global  2560,   41.9M tok) | loss 1.9373 | lr 1.00e-03 | gnorm 0.46 | 11.6k tok/s | aux 0.00000 | MaxVio 6.435 | dead 0 starved 80 | bias [+0.000,+0.000]
+step   580 (global  2580,   42.3M tok) | loss 1.9259 | lr 1.00e-03 | gnorm 0.43 | 11.7k tok/s | aux 0.00000 | MaxVio 6.418 | dead 0 starved 80 | bias [+0.000,+0.000]
+step   600 (global  2600,   42.6M tok) | loss 1.9453 | lr 1.00e-03 | gnorm 0.44 | 11.7k tok/s | aux 0.00000 | MaxVio 6.394 | dead 0 starved 80 | bias [+0.000,+0.000]
+step   600 (global  2600,   42.6M tok) | val loss 1.9491
+final val loss 1.9491  (training time 14.6 min)
+sample [Once upon a time]: 'Once upon a time, there was a little girl named Lily. She loved to play in her backyard all day long. One day, her mom said she was going to go for a walk in the backyard. \n\nLily said to her mom, "Can we go to the park?"\n\nHer mom said, "Yes, we can go to the park. It was a nice place to stay."\n\nLily'
+sample [The little dog]: "The little dog was scared, so his owner told him to stay away from the chimney.\n\nBut the chimney was too heavy for the little little dog. It was trying to catch Timmy, so it managed to release him from the chimney.\n\nTimmy was so sad that he didn't want to get pet. But his owner encouraged him when i"
+sample [Lily wanted to]: 'Lily wanted to play with the big, scary dog. She climbed on the big dog and pretended it was the right thing to do.\n\n"Help! Help!" Lily cried. "The big dog is chasing us!"\n\nBut the big dog was strong and quick. He chased them all the way back to the big dog. The big dog was scared and ran away. Lily'

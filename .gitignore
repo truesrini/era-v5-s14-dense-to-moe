@@ -1,0 +1,11 @@
+# environment
+.venv/
+__pycache__/
+*.pyc
+
+# large / regenerable artifacts
+data/
+checkpoints/
+
+# class materials (not part of the submission)
+Background/
