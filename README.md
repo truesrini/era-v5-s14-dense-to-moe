@@ -1,12 +1,12 @@
 # Dense → Mixture-of-Experts: growing a trained model and continuing to train
 
-**ERA V5, Session 14 assignment:** *"Train a Linear model and convert that into an MoE! Your call on
-model size and data trained on, but must show they continue to train and reduce loss!"*
+**Objective:** *"Train a Linear model and convert that into an Mixture of Experts to show they continue 
+to train and reduce loss!"*
 
 This repo trains a small dense model on TinyStories. "Dense" here means one feed-forward network per
-layer, the "linear model" from class. It then converts ("upcycles") that model into a mixture-of-experts
-model using the recipe from the session and keeps training it. A second branch keeps training the dense
-model from the same checkpoint, on the same data stream and learning-rate schedule, so the MoE has a fair
+layer. It then converts ("upcycles") that model into a mixture-of-experts model using the recipe from 
+the session and keeps training it. A second branch keeps training the dense model from the same 
+checkpoint, on the same data stream and learning-rate schedule, so the MoE has a fair
 baseline to beat.
 
 ## Results
@@ -82,7 +82,7 @@ y = Σ_j  w_down[:, j] · silu(w_gate[j] · x) · (w_up[j] · x)        j = 1 �
 ```
 
 Each neuron is an independent (gate row, up row, down column) triple, so an expert can be built from any
-subset of neurons. The recipe is the partition-style growth from Section 15. It follows Qwen1.5-MoE and
+subset of neurons. The recipe is the partition-style growth. It follows Qwen1.5-MoE and
 the Lightning LM's "shared expert + overlapping random halves":
 
 ```
